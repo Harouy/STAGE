@@ -32,8 +32,8 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(UtilisateurDTO personneDTO){
-        String email = personneDTO.getEmail();
-        Optional<Utilisateur> existingPersonne = personneRepository.findByEmail(email);
+        String login = personneDTO.getLogin();
+        Optional<Utilisateur> existingPersonne = personneRepository.findByLogin(login);
         if(existingPersonne.isPresent() ) {
             String errorMessage = "ce compte avec cet email existe déjà";
             return AuthenticationResponse.builder()
@@ -57,11 +57,11 @@ public class AuthService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getLogin(),
                         request.getPassword()
                 )
         );
-        Utilisateur personne = personneRepository.findByEmail(request.getEmail()).orElseThrow();
+        Utilisateur personne = personneRepository.findByLogin(request.getLogin()).orElseThrow();
         Map<String, Object> extraClaims = new HashMap<>();
         extraClaims.put("idPersonne", personne.getId());
         extraClaims.put("nom", personne.getPrenom());

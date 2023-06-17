@@ -17,7 +17,7 @@ public class UserRegistrationDetailsService implements UserDetailsService {
     private final UtilisateurRepository utilisateurRepository;
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Utilisateur personne = utilisateurRepository.findByEmail(email)
+        Utilisateur personne = utilisateurRepository.findByLogin(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Cette utilisateur n'existe pas"));
         UserRegistrationDetails user = new UserRegistrationDetails(personne);
         return user;

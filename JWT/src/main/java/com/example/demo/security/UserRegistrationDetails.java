@@ -22,7 +22,7 @@ public class UserRegistrationDetails implements UserDetails{
     private List<GrantedAuthority> authorities;
 
     public UserRegistrationDetails(Utilisateur personne) {
-        this.username = personne.getEmail();
+        this.username = personne.getLogin();
         this.password = personne.getMdp();
         /* List<GrantedAuthority> authorityList = Arrays.stream(personne.getType().toString().split(""))
                 .map(SimpleGrantedAuthority::new)
