@@ -11,4 +11,5 @@ public class UtilisateurDTO {
     private String email;
     private String mdp;
     private String login;
+    private Long id_contribuable;
 }

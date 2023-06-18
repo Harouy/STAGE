@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
+import com.example.demo.entities.Type_profil;
 import com.example.demo.entities.Utilisateur;
 
 import java.util.ArrayList;
@@ -27,13 +27,13 @@ public class UserRegistrationDetails implements UserDetails{
         /* List<GrantedAuthority> authorityList = Arrays.stream(personne.getType().toString().split(""))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());*/
-        
+      
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.authorities;
     }
+  
 
     @Override
     public String getPassword() {

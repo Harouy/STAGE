@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.dtos.UtilisateurDTO;
+import com.example.demo.exceptions.PersonneNotFoundException;
 import com.example.demo.security.AuthService;
 import com.example.demo.security.AuthenticationRequest;
 import com.example.demo.security.AuthenticationResponse;
@@ -23,7 +24,7 @@ public class AuthenticationController {
     private final AuthService authService;
     private final JwtService jwtservice;
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody UtilisateurDTO personneDTO) {
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody UtilisateurDTO personneDTO) throws PersonneNotFoundException {
         AuthenticationResponse authResponse = authService.register(personneDTO);
         if (authResponse.getErrorMessage() != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(authResponse);
