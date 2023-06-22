@@ -22,7 +22,7 @@ public class UtilisateurMapper {
         UtilisateurDTO personneDTO = new UtilisateurDTO();
         BeanUtils.copyProperties(personne,personneDTO);
         Contribuable contribuable=personne.getContribuable();
-        personneDTO.setId_contribuable(contribuable.getID_Contribuable());;
+        personneDTO.setId_contribuable(contribuable.getID());;
         return personneDTO;
     }
 
@@ -30,7 +30,7 @@ public class UtilisateurMapper {
         Utilisateur personne= new Utilisateur();
         BeanUtils.copyProperties(personneDTO,personne);
         personne.setMdp(passwordEncoder.encode(personneDTO.getMdp()));
-        Contribuable contribuable=  contribuableservice.getContribuable(personneDTO.getId_contribuable());
+        Contribuable contribuable=  contribuableservice.getContribuableBYpersonne(personneDTO.getId_contribuable());
         personne.setContribuable(contribuable);
        
         return personne;

@@ -33,6 +33,6 @@ public class ContribuableController {
 	        String jwt = authHeader.substring(7);
 	        Long idutilisateur = jwtService.extractIdPersonne(jwt);
 	    	
-	        return ContribuableMapper.fromContribuable( contribuableservice.getContribuable(idutilisateur));
+	        return ContribuableMapper.fromContribuable( contribuableservice.getContribuableBYpersonne(idutilisateur));
 	    }
 }

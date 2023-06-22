@@ -16,7 +16,7 @@ public class Obligation_fiscale {
 @Id
 private Long Id;
 private String type;
-@OneToOne
+@OneToOne(mappedBy="obligation_fiscale")
 private Versement versement;
 	
 }

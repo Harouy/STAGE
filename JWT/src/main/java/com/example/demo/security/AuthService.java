@@ -11,11 +11,12 @@ import org.springframework.stereotype.Service;
 
 
 import com.example.demo.dtos.UtilisateurDTO;
+import com.example.demo.entities.Contribuable;
 import com.example.demo.entities.Type_profil;
 import com.example.demo.entities.Utilisateur;
 import com.example.demo.exceptions.PersonneNotFoundException;
 import com.example.demo.mappers.UtilisateurMapper;
-
+import com.example.demo.repositories.ContribuableRepository;
 import com.example.demo.repositories.UtilisateurRepository;
 
 import java.util.HashMap;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 public class AuthService {
     private final UtilisateurMapper personneMapper;
     private final UtilisateurRepository personneRepository;
+    private final ContribuableRepository contibuablerepository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
@@ -64,13 +66,19 @@ public class AuthService {
                 )
         );
         Utilisateur personne = personneRepository.findByLogin(request.getLogin()).orElseThrow();
+        Contribuable contribuable=personne.getContribuable();
         /*List<Type_profil> roles = personne.getType_profils();
         List<String> roleNames = roles.stream()
                 .map(Type_profil::getType)
                 .collect(Collectors.toList());*/
         Map<String, Object> extraClaims = new HashMap<>();
         extraClaims.put("idPersonne", personne.getId());
-        extraClaims.put("nom", personne.getPrenom());
+        extraClaims.put("nom", personne.getNom());
+        extraClaims.put("prenom", personne.getPrenom());
+        extraClaims.put("raisonsociale",contribuable.getRaison_Sociale() );
+        extraClaims.put("ice", contribuable.getICE());
+        extraClaims.put("idcontribuable", contribuable.getID());
+        extraClaims.put("identiffiscal",contribuable.getID_Fiscal());
        /* extraClaims.put("roles", roleNames);*/
      
         UserDetails userDetails = new UserRegistrationDetails(personne);

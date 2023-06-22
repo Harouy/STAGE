@@ -59,6 +59,12 @@ public class JwtService {
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
+    public Long extractIdContribuable(String token) {
+        Claims claims = extractAllClaims(token);
+        Long idcontribuable = claims.get("idcontribuable", Long.class);
+        return idcontribuable;
+    }
+
 
     public Long extractIdPersonne(String token) {
         Claims claims = extractAllClaims(token);

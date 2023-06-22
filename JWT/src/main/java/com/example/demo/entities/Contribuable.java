@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Contribuable {
 @Id
-private Long ID_Contribuable;
+private Long ID;
 private String Activité;
 private String Adresse;
 private int ATP;

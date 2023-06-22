@@ -20,4 +20,7 @@ public Utilisateur getUtilisateur(Long id) throws PersonneNotFoundException  {
 Utilisateur utilisateur=utilisateurRepository.findById(id).orElseThrow(() -> new PersonneNotFoundException("Ce personne n'existe pas"));
 return utilisateur;
 }
+
+
+
 }

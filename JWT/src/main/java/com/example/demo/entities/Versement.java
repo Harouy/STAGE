@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -36,11 +38,12 @@ private int Montant_total_impu;
 private int Montant_pénalité_retard;
 private int Montant_principal_payé;
 private int version;
+private long idmodificateur;
 @ManyToOne
 private Contribuable contribuable;
 @ManyToOne
 private Etat_versement etat_versement;
-@OneToOne(mappedBy="versement")
+@OneToOne
 private Obligation_fiscale obligation_fiscale;
 @OneToMany(mappedBy="versement")
 private List<Imputation> imputations;
