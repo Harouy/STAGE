@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ContribuableDTO {
-	private Long ID_Contribuable;
+	private Long ID;
 	
 	
 	private int ICE;

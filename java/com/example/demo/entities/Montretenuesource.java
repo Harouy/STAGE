@@ -22,8 +22,8 @@ public class Montretenuesource {
 	private long ID;
 	private int ICE;
 	private int Identi_fiscal;
-	private int montant_rémunérations;
-	private int Montant_retenu;
+	private double montant_rémunérations;
+	private double Montant_retenu;
 	private String Raison_sociale;
 	private Date date_prel;
 	@ManyToOne

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Imputations_Listes extends Imputation {
-private int Montant_total;
+private double Montant_total;
 @OneToMany(mappedBy ="imputationslistes")
 private List<Mo_ISPPRF> montantsISPPRF;
 @OneToMany(mappedBy ="imputationslistes")

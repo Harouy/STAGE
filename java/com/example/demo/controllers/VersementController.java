@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Services.ContribuableService;
 import com.example.demo.Services.VersementService;
+import com.example.demo.dtos.AcompteCalculDTO;
 import com.example.demo.dtos.FormulaireRequest;
+import com.example.demo.dtos.RequestCaluclDTO;
 import com.example.demo.dtos.VersementDTO;
 import com.example.demo.entities.Versement;
 import com.example.demo.exceptions.PersonneNotFoundException;
@@ -48,5 +50,13 @@ public class VersementController {
 		LocalDateTime date=versementservice.getDateexegibilité(formulaire);
 		return ResponseEntity.ok(date);
 	}
+  @PostMapping("/calcul")
+  public ResponseEntity<AcompteCalculDTO> calcul(@RequestBody RequestCaluclDTO calcul ){
+	  AcompteCalculDTO acomptecalculDTO=versementservice.calcul(calcul);
+	  return ResponseEntity.ok(acomptecalculDTO);
+	  
+  }
+
+
 
 }

@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Imputations_Montant  extends Imputation{
-private int Augmentation_capi;
-private int Montant_excedant;
-private int réduction_impot;
-private int Reliquat_IS;
-private int Reliquat_retenue_source;
+private double Augmentation_capi;
+private double Montant_excedant;
+private double réduction_impot;
+private double Reliquat_IS;
+private double Reliquat_retenue_source;
 }

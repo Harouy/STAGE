@@ -15,7 +15,7 @@ public class Paiement {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long Id;
 private Date date_paiement;
-private int Montant_total;
+private double Montant_total;
 private int ticket;
 @OneToOne
 private Versement versement;

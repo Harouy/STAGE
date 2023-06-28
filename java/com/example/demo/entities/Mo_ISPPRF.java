@@ -16,8 +16,8 @@ public class Mo_ISPPRF {
 private long Id_ISPPRF;
 private int Identi_fiscal;
 private Date date_prel;
-private int Montants_produits;
-private int Montant_retenue;
+private double Montants_produits;
+private double Montant_retenue;
 private String Raison_Sociale;
 private int rel_prel;
 @ManyToOne
